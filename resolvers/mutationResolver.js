@@ -34,6 +34,9 @@ const mutationResolver = {
         if(!isAuth){
           throw new Error('Unauthenticated!');
         }
+        if(user.email !== 'admin@yellowclass.com'){
+          throw new Error('You are not allowed to create a group!');
+        }
         const group = new Group({name, messages: []})
         return group.save()
       },
