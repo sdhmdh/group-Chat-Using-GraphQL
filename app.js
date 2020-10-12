@@ -9,9 +9,8 @@ import { PubSub } from 'apollo-server';
 import typeDefs from './schema/schema';
 import resolvers from './resolvers';
 
-
 const startServer = async () => {
-  const PORT = 4000;
+  const PORT = process.env.PORT;
   const app = express();
   app.use(cors());
   app.use(bodyParser.json());

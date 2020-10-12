@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
+require('dotenv').config();
 
-const URI = 'mongodb://sudhanshu123:sudhanshu123@cluster0-shard-00-00.9zed5.mongodb.net:27017,cluster0-shard-00-01.9zed5.mongodb.net:27017,cluster0-shard-00-02.9zed5.mongodb.net:27017/test?ssl=true&replicaSet=atlas-7wszc5-shard-0&authSource=admin&retryWrites=true&w=majority'
+const URI = process.env.MONGO_URI
 const connectToDB = async () => {
     await mongoose.connect(URI, {
          useNewUrlParser: true,

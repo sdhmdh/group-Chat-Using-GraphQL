@@ -16,7 +16,7 @@ const queryResolver = {
         }
         const token = jwt.sign(
           { userId: user.id, email: user.email },
-          'yellowclasssecretkey',
+          process.env.JWT_SECRET_KEY,
           {
             expiresIn: '1h'
           }

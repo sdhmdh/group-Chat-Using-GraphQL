@@ -8,7 +8,7 @@ export default (authToken) => {
   }
   let decodedToken;
   try {
-    decodedToken = jwt.verify(token, "yellowclasssecretkey");
+    decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
   } catch (err) {
     return { isAuth, userId: null };
   }
