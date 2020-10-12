@@ -30,10 +30,11 @@ const mutationResolver = {
         }
       },
   
-      addGroup: (parent, {name}, {isAuth, userId}, info) => {
+      addGroup: async (parent, {name}, {isAuth, userId}, info) => {
         if(!isAuth){
           throw new Error('Unauthenticated!');
         }
+        const user = await User.findOne({_id: ObjectID(userId)});
         if(user.email !== 'admin@yellowclass.com'){
           throw new Error('You are not allowed to create a group!');
         }
