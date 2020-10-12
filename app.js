@@ -18,6 +18,8 @@ const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+    introspection: true,
+    playground: true,
     context: async ({ req, connection }) => {
       if(connection){
         return {req, pubsub}
@@ -37,7 +39,7 @@ const startServer = async () => {
   server.applyMiddleware({ app });
   const httpServer = http.createServer(app);
   server.installSubscriptionHandlers(httpServer);
-  
+
   const PORT = process.env.PORT || 5000;
   httpServer.listen(PORT, () => {
     console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
