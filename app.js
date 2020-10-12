@@ -14,6 +14,10 @@ const startServer = async () => {
   app.use(cors());
   app.use(bodyParser.json());
 
+  app.get('/', (req,res) => {
+    res.send("Please route to /graphql for GraphQL Playground!");
+  });
+
   const pubsub = new PubSub();
   const server = new ApolloServer({
     typeDefs,
