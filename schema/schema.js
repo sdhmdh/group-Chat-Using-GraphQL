@@ -33,7 +33,7 @@ const schema = `
 
     type Query {
         login(email: String!, password: String!): AuthData!
-        groups: [Group!]!
+        groups(first: Int, skip: Int): [Group!]!
         groupMessages(groupId: String!): [Message!]!
     }
 

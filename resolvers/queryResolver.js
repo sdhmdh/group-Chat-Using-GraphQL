@@ -24,11 +24,11 @@ const queryResolver = {
         return { userId: user.id, token: token };
       },
   
-      groups: (parent, args, {isAuth, userId} , info) => {
+      groups: (parent, {first, skip}, {isAuth, userId} , info) => {
         if(!isAuth){
           throw new Error('Unauthenticated!');
         }
-        return Group.find({});
+        return Group.find({}).limit(first).skip(skip);
       },
   
       groupMessages : async (parent, {groupId}, {isAuth, userId} , info) => {
